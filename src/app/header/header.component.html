@@ -1,85 +1,128 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Periodicals</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Periodicals</a>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav ">
-        <li class="dropdown" appDropdown>
-          <a style="cursor: pointer" class="dropdown-toggle" role="button">Language <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">Save Data</a></li>
-            <li><a style="cursor: pointer">Fetch Data</a></li>
-          </ul>
-        </li>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button">Sorting <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">Sort by title</a></li>
             <li><a style="cursor: pointer">Sort by price</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" appDropdown>
-          <a style="cursor: pointer" class="dropdown-toggle" role="button">Topics <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">News</a></li>
-            <li><a style="cursor: pointer">Economy</a></li>
-            <li><a style="cursor: pointer">...</a></li>
+            <li><a style="cursor: pointer">Sort by title</a></li>
           </ul>
         </li>
       </ul>
+
+
+      <ul class="nav navbar-nav navbar-right" style="margin-top: 7px">
+        <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Sign up</button></li>
+        <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Log in</button></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button style="margin-left: 5px; margin-right: -15px" type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <form class="form-inline my-2 my-lg-0">
-        <li>
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </li>
-        <li><button class="btn btn-outline-success" type="submit">Search</button>
-        </li>
-        </form>
-
-    </ul>
-
-
-<!--    <div class="collapse navbar-collapse navbar-right">-->
-<!--      <ul class="nav navbar-nav navbar-right">-->
-<!--        <li class="">-->
-<!--          <form class="d-flex">-->
-<!--            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--            <button class="btn btn-outline-success me-2" type="submit">Search</button>-->
-<!--          </form>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <button class="btn btn-primary me-2" type="submit">Sign up</button>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <button class="btn btn-primary" type="submit">Log In</button>-->
-<!--        </li>-->
-<!--      </ul>-->
-
-      </div>
-<!--  </div>-->
+  </div>
 </nav>
 
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+
+
+
+<!--<nav class="navbar navbar-default">-->
 <!--  <div class="container-fluid">-->
-<!--    <a class="navbar-brand">Periodicals</a>-->
-<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse ">-->
-<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
-<!--&lt;!&ndash;        <li class="dropdown" appDropdown>&ndash;&gt;-->
-<!--&lt;!&ndash;          <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>&ndash;&gt;-->
-<!--&lt;!&ndash;          <ul class="dropdown-menu">&ndash;&gt;-->
-<!--&lt;!&ndash;            <li><a style="cursor: pointer">Save Data</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <li><a style="cursor: pointer">Fetch Data</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
+<!--    <div class="navbar-header">-->
+<!--      <a href="#" class="navbar-brand">Periodicals</a>-->
+<!--    </div>-->
+<!--    <div class="collapse navbar-collapse">-->
+<!--      <ul class="nav navbar-nav ">-->
+<!--        <li class="dropdown" appDropdown>-->
+<!--          <a style="cursor: pointer" class="dropdown-toggle" role="button">Language <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a style="cursor: pointer">Save Data</a></li>-->
+<!--            <li><a style="cursor: pointer">Fetch Data</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="dropdown" appDropdown>-->
+<!--          <a style="cursor: pointer" class="dropdown-toggle" role="button">Sorting <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a style="cursor: pointer">Sort by title</a></li>-->
+<!--            <li><a style="cursor: pointer">Sort by price</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="dropdown" appDropdown>-->
+<!--          <a style="cursor: pointer" class="dropdown-toggle" role="button">Topics <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a style="cursor: pointer">News</a></li>-->
+<!--            <li><a style="cursor: pointer">Economy</a></li>-->
+<!--            <li><a style="cursor: pointer">...</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    <ul class="nav navbar-nav navbar-right">-->
+<!--      <form class="form-inline my-2 my-lg-0">-->
+<!--        <li>-->
+<!--          <input class="form-control" type="search" placeholder="Search" aria-label="Search">-->
+<!--        </li>-->
+<!--        <li><button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--        </li>-->
+<!--        </form>-->
+
+<!--    </ul>-->
+
+
+<!--&lt;!&ndash;    <div class="collapse navbar-collapse navbar-right">&ndash;&gt;-->
+<!--&lt;!&ndash;      <ul class="nav navbar-nav navbar-right">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="">&ndash;&gt;-->
+<!--&lt;!&ndash;          <form class="d-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn btn-outline-success me-2" type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </form>&ndash;&gt;-->
 <!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--        <li class="nav-item dropdown " appDropdown>-->
-<!--          <a class="nav-link dropdown-toggle" role="button">-->
-<!--            Languages-->
-<!--          </a>-->
+<!--&lt;!&ndash;        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;          <button class="btn btn-primary me-2" type="submit">Sign up</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;          <button class="btn btn-primary" type="submit">Log In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ul>&ndash;&gt;-->
+
+<!--      </div>-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</nav>-->
+
+<!--&lt;!&ndash;<nav class="navbar navbar-expand-lg navbar-dark bg-dark">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="container-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="navbar-brand">Periodicals</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="collapse navbar-collapse ">&ndash;&gt;-->
+<!--&lt;!&ndash;      <ul class="navbar-nav me-auto mb-2 mb-lg-0">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <li class="dropdown" appDropdown>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          <ul class="dropdown-menu">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <li><a style="cursor: pointer">Save Data</a></li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <li><a style="cursor: pointer">Fetch Data</a></li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          </ul>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item dropdown " appDropdown>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link dropdown-toggle" role="button">&ndash;&gt;-->
+<!--&lt;!&ndash;            Languages&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
 <!--          <ul class="dropdown-menu" aria-labelledby="lang">-->
 <!--            <li><a style="cursor: pointer">UA</a></li>-->
 <!--            <li><a style="cursor: pointer">EN</a></li>-->
@@ -105,12 +148,12 @@
 <!--          </ul>-->
 <!--        </li>-->
 <!--      </ul>-->
-<!--      <form class="d-flex">-->
-<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--        <button class="btn btn-outline-success me-2" type="submit">Search</button>-->
-<!--      </form>-->
-<!--      <button class="btn btn-primary me-2" type="submit">Sign up</button>-->
-<!--      <button class="btn btn-primary" type="submit">Log In</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</nav>-->
+<!--&lt;!&ndash;      <form class="d-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button class="btn btn-outline-success me-2" type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </form>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-primary me-2" type="submit">Sign up</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-primary" type="submit">Log In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
