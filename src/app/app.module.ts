@@ -4,17 +4,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {DropdownDirective} from "./shared/dropdown.directive";
+import { PublishersComponent } from './publishers/publishers.component';
+import { PublisherListComponent } from './publishers/publisher-list/publisher-list.component';
+import { PublisherItemComponent } from './publishers/publisher-list/publisher-item/publisher-item.component';
+import {PublisherService} from "./publishers/publisher.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective
+    DropdownDirective,
+    PublishersComponent,
+    PublisherListComponent,
+    PublisherItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PublisherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

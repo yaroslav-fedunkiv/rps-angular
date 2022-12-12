@@ -1,0 +1,22 @@
+<div class="row m-4" style="background-color: white; border-radius: 5px;">
+  <div class="col d-flex" style="position: relative">
+    <div style="float:left" class="col-3">
+      <img src="{{publisher.image}}" class="p-4" alt="" style="border-radius: 26px;" width="200px"
+           height="275">
+    </div>
+    <div style="align-content: center" class="col-9 position-relative">
+      <h3 style="text-align: center">{{publisher.title}}</h3><br><br>
+      <p style="text-align: center; margin-top: -50px" class="fs-5"><i>pricePerMonth <b>{{publisher.price}} uah</b></i></p>
+      <p style="text-align: center">{{publisher.description}}</p>
+      <div class="col text-center">
+        <div class="position-absolute translate-middle-x bottom-0 start-50 pb-3">
+          <a href="#">
+            <button type="button" class="btn btn-success">
+              subscribe
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
