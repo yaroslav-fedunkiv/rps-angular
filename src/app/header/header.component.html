@@ -15,15 +15,30 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown" appDropdown>
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">Language <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer">UA</a></li>
+            <li><a style="cursor: pointer">EN</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button">Sorting <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">Sort by price</a></li>
-            <li><a style="cursor: pointer">Sort by title</a></li>
+            <li><a style="cursor: pointer">by price</a></li>
+            <li><a style="cursor: pointer">by title</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" appDropdown>
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">Topics <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer">News</a></li>
+            <li><a style="cursor: pointer">Economy</a></li>
+            <li><a style="cursor: pointer">Fashion</a></li>
+            <li><a style="cursor: pointer">Other</a></li>
+            <li><a style="cursor: pointer">...</a></li>
           </ul>
         </li>
       </ul>
-
-
       <ul class="nav navbar-nav navbar-right" style="margin-top: 7px">
         <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Sign up</button></li>
         <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Log in</button></li>
