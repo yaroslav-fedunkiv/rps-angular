@@ -24,4 +24,7 @@ export class PublisherService{
   getPublishers(){
     return this.publishers.slice();
   }
+  getRecipe(index: number){
+    return this.publishers[index];
+  }
 }

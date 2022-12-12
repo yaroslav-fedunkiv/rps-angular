@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Injectable, Input} from '@angular/core';
 import {Publisher} from "../../publisher.model";
 
 @Component({
@@ -7,11 +7,12 @@ import {Publisher} from "../../publisher.model";
   styleUrls: ['./publisher-item.component.css']
 })
 export class PublisherItemComponent{
+  @Injectable()
   @Input() publisher: Publisher;
-  @Input() index: number;
+  @Input()  index: number;
 
 
-  constructor(publisher: Publisher, index: number) {
+  constructor(publisher: Publisher, @Inject(Number) index: number) {
     this.publisher = publisher;
     this.index = index;
   }
