@@ -1,5 +1,5 @@
 import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
-import {Publisher} from "../publisher.model";
+
 import {Subscription} from "rxjs";
 import {PublisherService} from "../publisher.service";
 import {FullPublisherModel} from "../full-publisher.model";
@@ -9,7 +9,8 @@ import {FullPublisherModel} from "../full-publisher.model";
   templateUrl: './publisher-list.component.html',
   styleUrls: ['./publisher-list.component.css']
 })
-@Injectable({providedIn: 'root'})
+// @Injectable({providedIn: 'root'})
+@Injectable()
 export class PublisherListComponent implements  OnInit, OnDestroy{
   // publishers: Publisher[];
   publishers: FullPublisherModel[];
@@ -25,7 +26,11 @@ export class PublisherListComponent implements  OnInit, OnDestroy{
         this.publishers = publishers;
       }
     );
-    this.publishers = <FullPublisherModel[]><unknown>this.publisherService.getAllPublishers();
+    this.publisherService.getAllPublishers().subscribe(
+      data => {
+        this.publishers = data;
+      }
+    );
   }
 
   ngOnDestroy() {

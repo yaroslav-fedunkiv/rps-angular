@@ -9,6 +9,7 @@ import { PublisherListComponent } from './publishers/publisher-list/publisher-li
 import { PublisherItemComponent } from './publishers/publisher-list/publisher-item/publisher-item.component';
 import {PublisherService} from "./publishers/publisher.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [PublisherService],
   bootstrap: [AppComponent]

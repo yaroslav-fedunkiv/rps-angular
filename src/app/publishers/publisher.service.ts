@@ -41,7 +41,7 @@ export class PublisherService{
   getAllPublishers(){
     return this.http
       .get<{[key: string]: FullPublisherModel}>(
-        'http://localhost:8080/publishers/get-all/posts.json')
+        'http://localhost:8080/publishers/get-all')
       .pipe(
         map((responseData) => {
           const postArray: FullPublisherModel[] = [];
@@ -52,6 +52,6 @@ export class PublisherService{
           }
           return postArray;
         })
-      ).subscribe(publishers => this.publishers = publishers as FullPublisherModel[]);
+      );
   }
 }

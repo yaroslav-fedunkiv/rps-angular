@@ -2,7 +2,7 @@ export interface FullPublisherModel{
   id: string;
   title: string;
   topic: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
   isActive: string;
