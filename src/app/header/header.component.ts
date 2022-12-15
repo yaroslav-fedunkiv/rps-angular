@@ -25,4 +25,8 @@ export class HeaderComponent implements OnInit{
   sortByPrice(){
     this.publisherService.sortByPrice();
   }
+
+  getByTopic(topic: string){
+    this.publisherService.getByTopic(topic);
+  }
 }

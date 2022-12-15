@@ -28,6 +28,9 @@ export class PublisherListComponent implements  OnInit, OnDestroy{
         this.publishers = data;
       }
     );
+    if (this.publisherService.currentTopic != ''){
+      this.publishers = this.publisherService.publishers;
+    }
   }
 
   ngOnDestroy() {

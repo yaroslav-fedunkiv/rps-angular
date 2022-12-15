@@ -7,6 +7,7 @@ import {FullPublisherModel} from "./full-publisher.model";
 export class PublisherService{
   publisherChanged = new Subject<FullPublisherModel[]>();
   publishers: FullPublisherModel[];
+  currentTopic = '';
 
   constructor(private http: HttpClient) {}
 
@@ -46,5 +47,14 @@ export class PublisherService{
 
   sortByPrice(){
     this.publishers.sort((a, b) => (+a.price < +b.price ? -1 : 1));
+  }
+
+  getByTopic(topic: string) {
+    this.currentTopic = topic;
+    return this.publishers.filter(obj => {
+      return obj.topic === topic;
+    });
+    // console.log('topic: '+ topic);
+    // console.log(this.publishers);
   }
 }

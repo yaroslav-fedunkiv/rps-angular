@@ -38,7 +38,9 @@
             class="dropdown-menu">
             <li
               *ngFor="let topic of allTopics">
-              <a style="cursor: pointer">{{topic | titlecase}}</a></li>
+              <a
+                style="cursor: pointer"
+                (click)="getByTopic(topic)">{{topic | titlecase}}</a></li>
           </ul>
         </li>
       </ul>
