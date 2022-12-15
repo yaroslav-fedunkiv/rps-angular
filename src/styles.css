@@ -1,3 +1,4 @@
 body{
-  background: url("https://img.freepik.com/free-photo/white-brick-wall-textures-background_1203-6587.jpg?w=2000")  no-repeat center center fixed;
+  background: url("../wall-bg.png")no-repeat center center fixed;
+  background-size: 1920px 1080px;
 }

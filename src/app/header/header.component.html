@@ -24,18 +24,21 @@
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button">Sorting <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">by price</a></li>
-            <li><a style="cursor: pointer">by title</a></li>
+            <li><a
+              style="cursor: pointer"
+              (click)="sortByTitle()">by title</a></li>
+            <li><a
+              style="cursor: pointer"
+              (click)="sortByPrice()">by price</a></li>
           </ul>
         </li>
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button">Topics <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">News</a></li>
-            <li><a style="cursor: pointer">Economy</a></li>
-            <li><a style="cursor: pointer">Fashion</a></li>
-            <li><a style="cursor: pointer">Other</a></li>
-            <li><a style="cursor: pointer">...</a></li>
+          <ul
+            class="dropdown-menu">
+            <li
+              *ngFor="let topic of allTopics">
+              <a style="cursor: pointer">{{topic | titlecase}}</a></li>
           </ul>
         </li>
       </ul>

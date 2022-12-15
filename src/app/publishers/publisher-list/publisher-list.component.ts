@@ -9,10 +9,8 @@ import {FullPublisherModel} from "../full-publisher.model";
   templateUrl: './publisher-list.component.html',
   styleUrls: ['./publisher-list.component.css']
 })
-// @Injectable({providedIn: 'root'})
 @Injectable()
 export class PublisherListComponent implements  OnInit, OnDestroy{
-  // publishers: Publisher[];
   publishers: FullPublisherModel[];
   subscription: Subscription;
 
@@ -20,12 +18,11 @@ export class PublisherListComponent implements  OnInit, OnDestroy{
   }
 
   ngOnInit() {
-    this.publisherService.publisherChanged.subscribe(
-      // (publishers: Publisher[]) => {
-      (publishers: FullPublisherModel[]) => {
-        this.publishers = publishers;
-      }
-    );
+    // this.publisherService.publisherChanged.subscribe(
+    //   (publishers: FullPublisherModel[]) => {
+    //     this.publishers = publishers;
+    //   }
+    // );
     this.publisherService.getAllPublishers().subscribe(
       data => {
         this.publishers = data;
