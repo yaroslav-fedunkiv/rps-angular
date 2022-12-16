@@ -57,8 +57,5 @@ export class PublisherService{
       this.publishersByTopic = this.publishers.filter(obj => {
       return obj.topic === topic;
     });
-    // this.publisherListComponent.setPublishers(this.publishersByTopic);
-    // console.log('topic: '+ topic);
-    // console.log(this.publishers);
   }
 }
