@@ -10,6 +10,7 @@ import { PublisherItemComponent } from './publishers/publisher-list/publisher-it
 import {PublisherService} from "./publishers/publisher.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     DropdownDirective,
     PublishersComponent,
     PublisherListComponent,
-    PublisherItemComponent
+    PublisherItemComponent,
+    FilterByTopicPipe
   ],
   imports: [
     BrowserModule,

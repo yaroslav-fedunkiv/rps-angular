@@ -2,11 +2,13 @@ import {Injectable} from "@angular/core";
 import {map, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
+import {PublisherListComponent} from "./publisher-list/publisher-list.component";
 
 @Injectable()
 export class PublisherService{
   publisherChanged = new Subject<FullPublisherModel[]>();
   publishers: FullPublisherModel[];
+  publishersByTopic: FullPublisherModel[];
   currentTopic = '';
 
   constructor(private http: HttpClient) {}
@@ -51,9 +53,11 @@ export class PublisherService{
 
   getByTopic(topic: string) {
     this.currentTopic = topic;
-    return this.publishers.filter(obj => {
+    console.log(this.currentTopic);
+      this.publishersByTopic = this.publishers.filter(obj => {
       return obj.topic === topic;
     });
+    // this.publisherListComponent.setPublishers(this.publishersByTopic);
     // console.log('topic: '+ topic);
     // console.log(this.publishers);
   }

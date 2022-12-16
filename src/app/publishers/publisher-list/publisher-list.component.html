@@ -1,6 +1,7 @@
 <div class="container col-8" style="justify-content: center">
+  <p>current topic: {{currentTopic()}}</p>
   <app-publisher-item
-    *ngFor="let publisherEl of publishers; let i = index"
+    *ngFor="let publisherEl of publishers | filterByTopic:currentTopic(); let i = index"
     [publisher]="publisherEl"
     [index]="i"></app-publisher-item>
 </div>

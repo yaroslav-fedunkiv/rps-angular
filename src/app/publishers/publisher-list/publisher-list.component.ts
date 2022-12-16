@@ -1,4 +1,4 @@
-import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
+import {Component, Injectable, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 
 import {Subscription} from "rxjs";
 import {PublisherService} from "../publisher.service";
@@ -10,9 +10,10 @@ import {FullPublisherModel} from "../full-publisher.model";
   styleUrls: ['./publisher-list.component.css']
 })
 @Injectable()
-export class PublisherListComponent implements  OnInit, OnDestroy{
+export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   publishers: FullPublisherModel[];
   subscription: Subscription;
+  @Input() currentTopic = this.getCurrentTopic;
 
   constructor(private publisherService: PublisherService) {
   }
@@ -32,6 +33,24 @@ export class PublisherListComponent implements  OnInit, OnDestroy{
       this.publishers = this.publisherService.publishers;
     }
   }
+
+  getCurrentTopic(){
+    return this.publisherService.currentTopic;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.publishers = this.publisherService.publishers;
+    console.log(this.publishers)
+  }
+
+   setPublishers(publishers: FullPublisherModel[]){
+     console.log('inside setPublishers() method')
+    this.publishers = publishers;
+  }
+
+  // getByTopic(){
+  //   return this.publisherService;
+  // }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
