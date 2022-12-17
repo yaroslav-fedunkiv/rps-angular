@@ -11,6 +11,8 @@ import {PublisherService} from "./publishers/publisher.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {AppRoutingModule} from "./app-routing.module";
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    AppRoutingModule
   ],
   providers: [PublisherService],
   bootstrap: [AppComponent]

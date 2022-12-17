@@ -1,6 +1,15 @@
 <div class="container col-8" style="justify-content: center">
   <app-publisher-item
-    *ngFor="let publisherEl of publishers | filterByTopic:currentTopic() ; let i = index"
+    *ngFor="let publisherEl of publishers | filterByTopic:currentTopic()| paginate: {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+    }  ; let i = index"
     [publisher]="publisherEl"
     [index]="i"></app-publisher-item>
+  <pagination-controls class="my-pagination"
+    previousLabel="Prev"
+    nextLabel="Next"
+    [directionLinks]="true"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
 </div>

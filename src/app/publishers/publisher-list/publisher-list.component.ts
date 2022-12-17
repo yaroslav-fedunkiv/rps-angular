@@ -13,17 +13,35 @@ import {FullPublisherModel} from "../full-publisher.model";
 export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   publishers: FullPublisherModel[];
   subscription: Subscription;
-  @Input() currentTopic = this.getCurrentTopic;
+  currentTopic = this.getCurrentTopic;
+
+  page = 1;
+  count = 0;
+  pageSize = 5;
+  pageSizes = [5, 10, 15];
 
   constructor(private publisherService: PublisherService) {
   }
 
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrievePublishers();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrievePublishers();
+  }
+
+  retrievePublishers():void{
+    this.publisherService.getAllPublishers().subscribe((responce) =>{
+      this.publishers = responce;
+    }
+    )
+  }
+
   ngOnInit() {
-    // this.publisherService.publisherChanged.subscribe(
-    //   (publishers: FullPublisherModel[]) => {
-    //     this.publishers = publishers;
-    //   }
-    // );
     this.publisherService.getAllPublishers().subscribe(
       data => {
         this.publishers = data;
