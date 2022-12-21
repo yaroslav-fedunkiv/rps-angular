@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {map, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
-import {PublisherListComponent} from "./publisher-list/publisher-list.component";
 
 @Injectable()
 export class PublisherService{

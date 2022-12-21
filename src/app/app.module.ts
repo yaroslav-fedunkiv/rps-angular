@@ -13,6 +13,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AppRoutingModule} from "./app-routing.module";
+import { RegistrationComponent } from './admin/registration/registration.component';
+import { AuthComponent } from './admin/auth/auth.component';
+import {UserService} from "./users/user.service";
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import {AppRoutingModule} from "./app-routing.module";
     PublishersComponent,
     PublisherListComponent,
     PublisherItemComponent,
-    FilterByTopicPipe
+    FilterByTopicPipe,
+    RegistrationComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ import {AppRoutingModule} from "./app-routing.module";
     NgxPaginationModule,
     AppRoutingModule
   ],
-  providers: [PublisherService],
+  providers: [PublisherService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

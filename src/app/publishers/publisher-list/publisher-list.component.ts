@@ -71,6 +71,6 @@ export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   // }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

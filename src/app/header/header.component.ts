@@ -1,5 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {PublisherService} from "../publishers/publisher.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,9 @@ import {PublisherService} from "../publishers/publisher.service";
 export class HeaderComponent implements OnInit{
   allTopics: string[] = [];
 
-  constructor(private publisherService: PublisherService) {
+  constructor(private publisherService: PublisherService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   async ngOnInit() {
@@ -28,5 +31,15 @@ export class HeaderComponent implements OnInit{
 
   getByTopic(topic: string){
     this.publisherService.getByTopic(topic);
+  }
+
+  goHome(){
+    this.router.navigate(['publishers'], {relativeTo: this.route});
+    this.publisherService.getByTopic('');
+  }
+
+  goToSignUpForm(){
+    this.router.navigate(['/sign-up'], //{relativeTo: this.route}
+    );
   }
 }

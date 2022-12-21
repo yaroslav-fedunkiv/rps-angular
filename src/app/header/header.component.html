@@ -11,7 +11,7 @@
       <a
         class="navbar-brand"
         style="cursor: pointer"
-        (click)="getByTopic('')">Periodicals</a>
+        (click)="goHome()">Periodicals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,7 +48,10 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="margin-top: 7px">
-        <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Sign up</button></li>
+        <li><button style="margin-left: 5px;"
+                    class="btn-primary btn"
+                    type="button"
+                    (click)="goToSignUpForm()">Sign up</button></li>
         <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Log in</button></li>
       </ul>
       <form class="navbar-form navbar-right">
