@@ -17,8 +17,9 @@ export class UserService{
       .subscribe(responseData=>{
         console.log(responseData);
       }, error => {
+
         this.error.next(error.message);
-        console.log(this.error)
+        console.error('error body ' + error.body)
       });
   }
 }

@@ -16,6 +16,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import { RegistrationComponent } from './admin/registration/registration.component';
 import { AuthComponent } from './admin/auth/auth.component';
 import {UserService} from "./users/user.service";
+import {ConfirmPasswordValidators} from "./shared/confirm-password.directive";
+// import {ConfirmPasswordDirective} from "./shared/confirm-password.directive";
 
 
 @NgModule({

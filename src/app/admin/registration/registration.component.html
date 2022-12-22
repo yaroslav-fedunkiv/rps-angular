@@ -28,7 +28,9 @@
                    name="text"
                    formControlName="password"
                    class="form-control" >
-            <span id="error_password" class="text-danger"></span>
+            <span id="error_password"
+                  class="text-danger"
+                  *ngIf="passwordError">Your password mast have at least 8 symbols, numbers and special symbols</span>
           </div>
           <div class="form-group">
             <label for="confirm_password">Confirm password <b style="color: red">*</b></label>
@@ -36,15 +38,16 @@
                    id="confirm_password"
                    name="text"
                    formControlName="confirmPassword"
-                   class="form-control" >
-            <span id="error_confirm_password" class="text-danger"></span>
+                   class="form-control"
+                   [ngStyle]="{'border':passwordMatchError ? '1px solid red' : '' }">
+            <span id="error_confirm_password"
+                  class="text-danger"></span>
           </div>
 
           <button type="submit"
                   class="btn btn-primary center"
-                  [disabled]="!signUpForm.valid"
-                  >Submit</button>
-
+                  [disabled]="!signUpForm.valid">
+            Submit</button>
         </form>
 
       </div>
