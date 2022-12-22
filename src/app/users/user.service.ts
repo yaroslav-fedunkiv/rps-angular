@@ -18,6 +18,7 @@ export class UserService{
         console.log(responseData);
       }, error => {
         this.error.next(error.message);
+        console.log(this.error)
       });
   }
 }
