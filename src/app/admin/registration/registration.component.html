@@ -19,7 +19,9 @@
                    formControlName="email"
                    class="form-control"
                    type="email">
-            <span id="error_age" class="text-danger"></span>
+            <span id="error_age"
+                  *ngIf="this.signUpForm.get('email')?.errors"
+                  class="text-danger">Such email address is already exist</span>
           </div>
           <div class="form-group">
             <label for="password">Password <b style="color: red">*</b></label>
@@ -30,7 +32,7 @@
                    class="form-control" >
             <span id="error_password"
                   class="text-danger"
-                  *ngIf="passwordError">Your password mast have at least 8 symbols, numbers and special symbols</span>
+                  *ngIf="this.signUpForm.get('password')?.invalid && this.signUpForm.get('password')?.touched">Your password mast have at least 8 symbols, numbers and special symbols</span>
           </div>
           <div class="form-group">
             <label for="confirm_password">Confirm password <b style="color: red">*</b></label>

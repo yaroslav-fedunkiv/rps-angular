@@ -17,6 +17,7 @@ import { RegistrationComponent } from './admin/registration/registration.compone
 import { AuthComponent } from './admin/auth/auth.component';
 import {UserService} from "./users/user.service";
 import {ConfirmPasswordValidators} from "./shared/confirm-password.directive";
+import {HttpBody} from "./shared/http.response.model";
 // import {ConfirmPasswordDirective} from "./shared/confirm-password.directive";
 
 

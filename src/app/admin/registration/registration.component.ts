@@ -11,6 +11,7 @@ import {ConfirmPasswordValidators} from "../../shared/confirm-password.directive
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
+  existedEmailMessage: any = this.userService.existedEmailMessage;
   // confirmPasswordValidationResult: any = null;
   signUpForm = new FormGroup({
     fullName: new FormControl('', Validators.required),
@@ -23,7 +24,9 @@ export class RegistrationComponent {
               private userService: UserService,
               private router: Router) {}
 
+
   get passwordMatchError() {
+    // console.log('inside passwordMatchError: '+this.signUpForm.get('password')?.valid);
     return (
       this.signUpForm.getError('mismatch') &&
       this.signUpForm.get('confirmPassword')?.touched
@@ -32,9 +35,16 @@ export class RegistrationComponent {
 
   get passwordError() {
     return (
-      this.signUpForm.getError('mismatch') &&
+      this.signUpForm.get('mismatch')?.valid &&
       this.signUpForm.get('password')?.touched
     );
+  }
+
+  onSubmit(){
+    console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
+    this.userService.addUser(<User>this.signUpForm.value);
+    // this.existedEmailMessage = this.userService.existedEmailMessage;
+    // console.log('a==> ' + this.confirmPasswordValidationResult.value);
   }
 
   // ngOnInit(): void {
@@ -54,10 +64,5 @@ export class RegistrationComponent {
   //   })
   // }
 
-  onSubmit(){
-    console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
-    this.userService.addUser(<User>this.signUpForm.value);
-    // console.log('a==> ' + this.confirmPasswordValidationResult.value);
-  }
 
 }
