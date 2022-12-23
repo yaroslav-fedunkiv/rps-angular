@@ -23,7 +23,7 @@ export class UserService {
       }, error => {
         console.log('error body ==> ' + JSON.stringify(error));
         let obj: HttpBody = JSON.parse(JSON.stringify(error));
-        console.log('errors ==> ' + obj.error.errors.at(0))
+        console.log('errors ==> ' + obj.error.errors.at(0));
           this.existedEmailMessage = obj.error.errors.at(0);
         this.currentError.next(error.message);
         console.error('error body ' + error.body);
