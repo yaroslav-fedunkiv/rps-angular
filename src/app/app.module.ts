@@ -21,6 +21,11 @@ import {HttpBody} from "./shared/http.response.model";
 import {HandleErrorsInterceptor} from "./error-handler/handle.errors.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import {PublishersListComponent} from "./admin/dashboard/publishers/publisher-list/publishers-list.component";
+import {
+  PublishersItemComponent
+} from "./admin/dashboard/publishers/publisher-list/publisher-item/publishers-item.component";
 // import {ConfirmPasswordDirective} from "./shared/confirm-password.directive";
 
 
@@ -31,10 +36,13 @@ import {ToastrModule} from "ngx-toastr";
     DropdownDirective,
     PublishersComponent,
     PublisherListComponent,
+    PublishersListComponent,
     PublisherItemComponent,
+    PublishersItemComponent,
     FilterByTopicPipe,
     RegistrationComponent,
-    AuthComponent
+    AuthComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

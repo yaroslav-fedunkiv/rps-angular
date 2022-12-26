@@ -1,0 +1,20 @@
+<tr>
+  <td>{{publisher.id}}</td>
+  <td><img src="{{publisher.image}}" width="50" height="75"></td>
+  <td><a>{{publisher.title}}</a></td>
+  <td>{{publisher.topic}}</td>
+  <td>{{publisher.price}}</td>
+  <td>
+    <div class="layer"><p>{{publisher.description}}</p></div>
+  </td>
+  <td>{{publisher.created}}</td>
+  <td>{{publisher.updated}}</td>
+  <td>{{publisher.isActive}}</td>
+  <td>
+    <a href="/edit-publisher?publisherName=${p.name}&page=${currentPage}" class="edit">
+      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+    </a>
+    <a href="/delete?name=${p.name}&page=${currentPage}" class="delete" data-toggle="modal">
+      <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+  </td>
+</tr>
