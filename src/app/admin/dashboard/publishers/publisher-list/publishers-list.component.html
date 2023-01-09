@@ -1,3 +1,12 @@
+<div class="container">
+  <pagination-controls class="my-pagination mx-auto"
+                       previousLabel="Prev"
+                       nextLabel="Next"
+                       [directionLinks]="true"
+                       (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
+
+
 <div class="container" style="background-color: white">
   <div class="table-wrapper">
     <div class="table-title">
@@ -35,7 +44,11 @@
             </tr>
           </thead>
           <tbody>
-                <tr *ngFor="let publisherEl of publishers;
+                <tr *ngFor="let publisherEl of publishers | paginate: {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+    };
 let i = index">
                   <td>{{publisherEl.id}}</td>
                   <td><img src="{{publisherEl.image}}" width="50" height="75" alt="{{publisherEl.title}}"></td>

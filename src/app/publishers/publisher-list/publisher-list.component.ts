@@ -35,8 +35,8 @@ export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   }
 
   retrievePublishers():void{
-    this.publisherService.getAllPublishers().subscribe((responce) =>{
-      this.publishers = responce;
+    this.publisherService.getAllPublishers().subscribe((response) =>{
+      this.publishers = response;
     }
     )
   }

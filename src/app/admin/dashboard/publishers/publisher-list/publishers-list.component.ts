@@ -9,9 +9,29 @@ import {PublisherService} from "../../../../publishers/publisher.service";
 })
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
-
+  page = 1;
+  count = 0;
+  pageSize = 5;
+  pageSizes = [5, 10, 15];
 
   constructor(private publisherService: PublisherService) {
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrievePublishers();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrievePublishers();
+  }
+  retrievePublishers():void{
+    this.publisherService.getAllPublishers().subscribe((response) =>{
+        this.publishers = response;
+      }
+    )
   }
 
   ngOnInit() {
