@@ -8,7 +8,11 @@ const appRoutes: Routes = [
   {path: '', redirectTo: '/publishers', pathMatch: 'full'},
   {path: 'publishers', component: PublishersComponent},
   {path: 'sign-up', component: RegistrationComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {
+    path: 'dashboard', component: DashboardComponent
+    // loadChildren: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
+    // component: DashboardComponent
+  }
 ]
 
 @NgModule({

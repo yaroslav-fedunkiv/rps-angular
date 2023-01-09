@@ -14,18 +14,20 @@ import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AppRoutingModule} from "./app-routing.module";
 import { RegistrationComponent } from './admin/registration/registration.component';
-import { AuthComponent } from './admin/auth/auth.component';
+// import { AuthComponent } from './admin/auth/auth.component';
 import {UserService} from "./users/user.service";
 import {ConfirmPasswordValidators} from "./shared/confirm-password.directive";
 import {HttpBody} from "./shared/http.response.model";
 import {HandleErrorsInterceptor} from "./error-handler/handle.errors.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 import {PublishersListComponent} from "./admin/dashboard/publishers/publisher-list/publishers-list.component";
-import {
-  PublishersItemComponent
-} from "./admin/dashboard/publishers/publisher-list/publisher-item/publishers-item.component";
+// import { DashboardComponent } from './admin/dashboard/dashboard.component';
+// import {PublishersListComponent} from "./admin/dashboard/publishers/publisher-list/publishers-list.component";
+// import {
+//   PublishersItemComponent
+// } from "./admin/dashboard/publishers/publisher-list/publisher-item/publishers-item.component";
 // import {ConfirmPasswordDirective} from "./shared/confirm-password.directive";
 
 
@@ -38,10 +40,8 @@ import {
     PublisherListComponent,
     PublishersListComponent,
     PublisherItemComponent,
-    PublishersItemComponent,
     FilterByTopicPipe,
     RegistrationComponent,
-    AuthComponent,
     DashboardComponent
   ],
   imports: [

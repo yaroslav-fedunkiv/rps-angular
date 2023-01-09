@@ -21,4 +21,13 @@ export class PublishersListComponent implements OnInit{
       }
     );
   }
+
+  editItem(id: string){
+    console.log('edit item', id)
+  }
+
+  deleteItem(id: string){
+    console.log('delete item', id)
+  }
+
 }
