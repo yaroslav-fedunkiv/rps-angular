@@ -1,4 +1,4 @@
-import {Component, Injectable, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Injectable, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 
 import {Subscription} from "rxjs";
 import {PublisherService} from "../publisher.service";

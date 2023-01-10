@@ -5,14 +5,10 @@ import {RegistrationComponent} from "./admin/registration/registration.component
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/publishers', pathMatch: 'full'},
-  {path: 'publishers', component: PublishersComponent},
+  {path: '', redirectTo: '/periodicals', pathMatch: 'full'},
+  {path: 'periodicals', component: PublishersComponent},
   {path: 'sign-up', component: RegistrationComponent},
-  {
-    path: 'dashboard', component: DashboardComponent
-    // loadChildren: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
-    // component: DashboardComponent
-  }
+  {path: 'dashboard', component: DashboardComponent}
 ]
 
 @NgModule({

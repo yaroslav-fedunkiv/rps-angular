@@ -1,11 +1,14 @@
-::ng-deep .my-pagination ::ng-deep{
+.my-pagination ::ng-deep .ngx-pagination{
+  font-size: 15px;
+}
+::ng-deep .my-pagination {
   display: flex;
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
 }
 
-::ng-deep .my-pagination li ::ng-deep{
+::ng-deep .my-pagination li{
   display: inline-block;
 }
 
@@ -18,13 +21,6 @@
   color: #007bff;
   background-color: #fff;
   border: 1px solid #dee2e6;
-}
-
-::ng-deep .my-pagination li.active a{
-  z-index: 2;
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
 }
 
 ::ng-deep .my-pagination li:first-child a{
@@ -53,7 +49,7 @@
   border-color: #dee2e6;
 }
 
-::ng-deep .my-pagination li.active a {
+.my-pagination ::ng-deep .ngx-pagination .current{
      z-index: 2;
      color: #fff;
      background-color: #007bff;

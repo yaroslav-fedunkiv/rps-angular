@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit{
   }
 
   goHome(){
-    this.router.navigate(['publishers'], {relativeTo: this.route});
+    this.router.navigate(['periodicals'], {relativeTo: this.route});
     this.publisherService.getByTopic('');
   }
 
