@@ -50,14 +50,25 @@ export class PublishersListComponent implements OnInit{
   }
 
   deleteItem(id: string, isActive: string){
-    this.deactivatePublisher(+id);
-    // if (isActive === 'true'){
-    // }
-    console.log('delete item', id)
+    if (isActive === 'true'){
+      this.deactivatePublisher(+id);
+      console.log('deactivate item', id)
+    } else if(isActive === 'false'){
+      this.activatePublisher(+id);
+      console.log('activate item', id)
+    }
   }
 
   deactivatePublisher(id: number){
     this.publisherService.deactivatePublisher(id)
+      .subscribe(
+        (response) => {console.log(response)},
+        (error) => {console.log(error)}
+      );
+  }
+
+  activatePublisher(id: number){
+    this.publisherService.activatePublisher(id)
       .subscribe(
         (response) => {console.log(response)},
         (error) => {console.log(error)}

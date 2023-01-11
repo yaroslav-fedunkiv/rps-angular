@@ -35,14 +35,14 @@ export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   }
 
   retrievePublishers():void{
-    this.publisherService.getAllPublishers().subscribe((response) =>{
+    this.publisherService.getAllActivePublishers().subscribe((response) =>{
       this.publishers = response;
     }
     )
   }
 
   ngOnInit() {
-    this.publisherService.getAllPublishers().subscribe(
+    this.publisherService.getAllActivePublishers().subscribe(
       data => {
         this.publishers = data;
       }

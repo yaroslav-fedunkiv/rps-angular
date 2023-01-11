@@ -7,6 +7,7 @@ import {FullPublisherModel} from "./full-publisher.model";
 export class PublisherService{
   publisherChanged = new Subject<FullPublisherModel[]>();
   publishers: FullPublisherModel[];
+  activePublishers: FullPublisherModel[];
   publishersByTopic: FullPublisherModel[];
   currentTopic = '';
 
@@ -21,46 +22,41 @@ export class PublisherService{
   // }
 
   getAllPublishers(){
-    return this.http
-      .get<{[key: string]: FullPublisherModel}>(
-        'http://localhost:8080/publishers/get-all')
-      .pipe(
-        map((responseData) => {
-          const postArray: FullPublisherModel[] = [];
-          for (const key in responseData){
-            if (responseData.hasOwnProperty(key)){
-              postArray.push({...responseData[key], id: key})
-            }
-          }
-          this.publishers = postArray;
-          return postArray;
-        })
-      );
+    return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
+      .pipe(map(publishers => {
+        this.publishers = publishers.slice(); // make a copy of the array
+        return this.publishers;
+      }));
+  }
+
+  getAllActivePublishers(){
+    return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get/all-active')
+      .pipe(map(publishers => {
+        this.activePublishers = publishers.slice(); // make a copy of the array
+        return this.activePublishers;
+      }));
   }
 
   deactivatePublisher(id: number) {
     const publishers = this.getPublishers();
     if (publishers) {
-      const publisher = publishers.at(id);
+      const publisher = publishers.at(id-1);
       if (publisher) {
         publisher.isActive = 'false';
       }
     }
+    return this.http.delete(`http://localhost:8080/publishers/deactivate/${id}`, {});
+  }
 
-    return this.http.delete(`http://localhost:8080/publishers/deactivate/${id}`, {})
-
-
-
-
-
-      // .subscribe(()=>{
-      //   this.getAllPublishers();
-      //   }
-      //   // this.http.get<FullPublisherModel>(`http://localhost:8080/publishers/get/by/${id}`)
-      //   //   .subscribe((publisher) => {
-      //   //       // this.publishers.at(id)?.isActive = publisher.isActive;
-      //   //   })
-      // );
+  activatePublisher(id: number){
+    const publishers = this.getPublishers();
+    if (publishers) {
+      const publisher = publishers.at(id-1);
+      if (publisher) {
+        publisher.isActive = 'true';
+      }
+    }
+    return this.http.delete(`http://localhost:8080/publishers/activate/${id}`, {});
   }
 
   getAllTopics(){
