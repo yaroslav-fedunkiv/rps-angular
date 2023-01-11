@@ -9,6 +9,9 @@ import {PublisherService} from "../../../../publishers/publisher.service";
 })
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
+
+
+  //pagination:
   page = 1;
   count = 0;
   pageSize = 5;
@@ -46,8 +49,19 @@ export class PublishersListComponent implements OnInit{
     console.log('edit item', id)
   }
 
-  deleteItem(id: string){
+  deleteItem(id: string, isActive: string){
+    this.deactivatePublisher(+id);
+    // if (isActive === 'true'){
+    // }
     console.log('delete item', id)
+  }
+
+  deactivatePublisher(id: number){
+    this.publisherService.deactivatePublisher(id)
+      .subscribe(
+        (response) => {console.log(response)},
+        (error) => {console.log(error)}
+      );
   }
 
 }

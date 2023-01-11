@@ -15,9 +15,10 @@ export class PublisherService{
   getPublishers(){
     return this.publishers.slice();
   }
-  getRecipe(index: number){
-    return this.publishers[index];
-  }
+
+  // getRecipe(index: number){
+  //   return this.publishers[index];
+  // }
 
   getAllPublishers(){
     return this.http
@@ -35,6 +36,31 @@ export class PublisherService{
           return postArray;
         })
       );
+  }
+
+  deactivatePublisher(id: number) {
+    const publishers = this.getPublishers();
+    if (publishers) {
+      const publisher = publishers.at(id);
+      if (publisher) {
+        publisher.isActive = 'false';
+      }
+    }
+
+    return this.http.delete(`http://localhost:8080/publishers/deactivate/${id}`, {})
+
+
+
+
+
+      // .subscribe(()=>{
+      //   this.getAllPublishers();
+      //   }
+      //   // this.http.get<FullPublisherModel>(`http://localhost:8080/publishers/get/by/${id}`)
+      //   //   .subscribe((publisher) => {
+      //   //       // this.publishers.at(id)?.isActive = publisher.isActive;
+      //   //   })
+      // );
   }
 
   getAllTopics(){
