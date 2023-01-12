@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FullPublisherModel} from "../../../../publishers/full-publisher.model";
 import {PublisherService} from "../../../../publishers/publisher.service";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalAddPublisherComponent} from "./modal-add-publisher/modal-add-publisher.component";
 
 @Component({
   selector: 'app-publishers-list',
@@ -10,14 +13,25 @@ import {PublisherService} from "../../../../publishers/publisher.service";
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
 
-
   //pagination:
   page = 1;
   count = 0;
   pageSize = 5;
   pageSizes = [5, 10, 15];
 
-  constructor(private publisherService: PublisherService) {
+  constructor(private publisherService: PublisherService,
+              private router: Router,
+              public dialog: MatDialog) {
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(ModalAddPublisherComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    // this.dialog.open(ModalAddPublisherComponent);
+    // this.router.navigate(['/dashboard/add-new-publisher']);
   }
 
   handlePageChange(event: number): void {

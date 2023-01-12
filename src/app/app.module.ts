@@ -19,7 +19,8 @@ import {HandleErrorsInterceptor} from "./error-handler/handle.errors.interceptor
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
-import {PublishersListComponent} from "./admin/dashboard/publishers/publisher-list/publishers-list.component";
+import {PublishersListComponent} from "./admin/dashboard/publishers/publishers-list/publishers-list.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {PublishersListComponent} from "./admin/dashboard/publishers/publisher-li
     DashboardComponent
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

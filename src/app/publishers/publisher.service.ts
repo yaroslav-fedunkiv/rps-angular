@@ -17,10 +17,6 @@ export class PublisherService{
     return this.publishers.slice();
   }
 
-  // getRecipe(index: number){
-  //   return this.publishers[index];
-  // }
-
   getAllPublishers(){
     return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
       .pipe(map(publishers => {
