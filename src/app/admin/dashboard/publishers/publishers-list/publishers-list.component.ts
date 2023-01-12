@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FullPublisherModel} from "../../../../publishers/full-publisher.model";
 import {PublisherService} from "../../../../publishers/publisher.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalAddPublisherComponent} from "./modal-add-publisher/modal-add-publisher.component";
+import {ModalDirective} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-publishers-list',
@@ -12,6 +13,7 @@ import {ModalAddPublisherComponent} from "./modal-add-publisher/modal-add-publis
 })
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
+  @ViewChild('myModal') myModal: ModalDirective;
 
   //pagination:
   page = 1;
@@ -24,15 +26,24 @@ export class PublishersListComponent implements OnInit{
               public dialog: MatDialog) {
   }
 
-  openModal() {
-    const dialogRef = this.dialog.open(ModalAddPublisherComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  openModal() {
+    this.myModal.show();
+  }
+
+  closeModal() {
+    this.myModal.hide();
+  }
+
+  // openModal() {
+    // const dialogRef = this.dialog.open(ModalAddPublisherComponent);
+    //
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
     // this.dialog.open(ModalAddPublisherComponent);
     // this.router.navigate(['/dashboard/add-new-publisher']);
-  }
+  // }
 
   handlePageChange(event: number): void {
     this.page = event;
@@ -46,7 +57,7 @@ export class PublishersListComponent implements OnInit{
   }
   retrievePublishers():void{
     this.publisherService.getAllPublishers().subscribe((response) =>{
-        this.publishers = response;
+        this.publishers = response as FullPublisherModel[];
       }
     )
   }
@@ -54,7 +65,7 @@ export class PublishersListComponent implements OnInit{
   ngOnInit() {
     this.publisherService.getAllPublishers().subscribe(
       data => {
-        this.publishers = data;
+        this.publishers = data as FullPublisherModel[];
       }
     );
   }

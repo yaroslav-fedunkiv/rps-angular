@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {map, Subject} from "rxjs";
+import {Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class PublisherService{
@@ -19,7 +20,7 @@ export class PublisherService{
 
   getAllPublishers(){
     return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
-      .pipe(map(publishers => {
+      .pipe(map(publishers=> {
         this.publishers = publishers.slice(); // make a copy of the array
         return this.publishers;
       }));
