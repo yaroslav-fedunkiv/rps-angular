@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {Observable, Subject, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
+import {CreatePublisherModel} from "./create-publisher.model";
 
 @Injectable()
 export class PublisherService{
@@ -11,6 +12,7 @@ export class PublisherService{
   activePublishers: FullPublisherModel[];
   publishersByTopic: FullPublisherModel[];
   currentTopic = '';
+  errorMessage = '';
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +26,25 @@ export class PublisherService{
         this.publishers = publishers.slice(); // make a copy of the array
         return this.publishers;
       }));
+  }
+
+  addPublisher(publisher: CreatePublisherModel): Observable<HttpErrorResponse> {
+    console.log(publisher.price);
+    return this.http.post<HttpErrorResponse>
+    ('http://localhost:8080/publishers/create', publisher)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          // let errorMessage = '';
+          // if (error.error instanceof ErrorEvent) {
+          //   // client-side error
+          //   errorMessage = `Error: ${error.error.message}`;
+          // } else {
+          //   // server-side error
+          //   this.errorMessage = error.error.errors[0];
+          // }
+          return throwError(error);
+        })
+      );
   }
 
   getAllActivePublishers(){
@@ -62,8 +83,9 @@ export class PublisherService{
         return publishers.slice().map((item) => item.topic)
           .filter((value, index, self) => self.indexOf(value) === index);
       }));
-
   }
+
+
 
   sortByTitle(){
     this.publishers.sort((a, b) => (a.title < b.title ? -1 : 1));
