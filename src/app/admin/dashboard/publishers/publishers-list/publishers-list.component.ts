@@ -3,7 +3,7 @@ import {FullPublisherModel} from "../../../../publishers/full-publisher.model";
 import {PublisherService} from "../../../../publishers/publisher.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {ModalAddPublisherComponent} from "./modal-add-publisher/modal-add-publisher.component";
+import {AddPublisherComponent} from "./add-publisher/add-publisher.component";
 import {ModalDirective} from "ngx-bootstrap/modal";
 
 @Component({

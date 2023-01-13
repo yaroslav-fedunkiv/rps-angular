@@ -21,6 +21,9 @@ import {ToastrModule} from "ngx-toastr";
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 import {PublishersListComponent} from "./admin/dashboard/publishers/publishers-list/publishers-list.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {
+  AddPublisherComponent
+} from "./admin/dashboard/publishers/publishers-list/add-publisher/add-publisher.component";
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     PublisherItemComponent,
     FilterByTopicPipe,
     RegistrationComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddPublisherComponent
   ],
   imports: [
     MatDialogModule,

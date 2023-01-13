@@ -57,8 +57,12 @@ export class PublisherService{
   }
 
   getAllTopics(){
-    return this.publishers.map((item) => item.topic)
-      .filter((value, index, self) => self.indexOf(value) === index);
+    return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
+      .pipe(map(publishers=> {
+        return publishers.slice().map((item) => item.topic)
+          .filter((value, index, self) => self.indexOf(value) === index);
+      }));
+
   }
 
   sortByTitle(){

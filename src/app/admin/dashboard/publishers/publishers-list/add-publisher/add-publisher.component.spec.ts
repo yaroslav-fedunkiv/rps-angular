@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalAddPublisherComponent } from './modal-add-publisher.component';
+import { AddPublisherComponent } from './add-publisher.component';
 
 describe('ModalAddPublisherComponent', () => {
-  let component: ModalAddPublisherComponent;
-  let fixture: ComponentFixture<ModalAddPublisherComponent>;
+  let component: AddPublisherComponent;
+  let fixture: ComponentFixture<AddPublisherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalAddPublisherComponent ]
+      declarations: [ AddPublisherComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalAddPublisherComponent);
+    fixture = TestBed.createComponent(AddPublisherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

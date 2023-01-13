@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit{
 
   async ngOnInit() {
     await new Promise(f => setTimeout(f, 1000));
-    this.allTopics = this.publisherService.getAllTopics();
+    this.publisherService.getAllTopics().subscribe(topics => {
+      this.allTopics = topics;
+    });
   }
 
   sortByTitle(){

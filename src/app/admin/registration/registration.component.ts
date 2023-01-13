@@ -16,7 +16,6 @@ export class RegistrationComponent implements OnInit{
   serverErrors$: Observable<any> = this.dataShare.serverError$;
 
   existedEmailMessage: any = this.userService.existedEmailMessage;
-  // confirmPasswordValidationResult: any = null;
   signUpForm = new FormGroup({
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,12 +30,10 @@ export class RegistrationComponent implements OnInit{
 
   ngOnInit() {
     this.dataShare.removeServerErrors();
-    // this.serverErrors$ = new Observable();
   }
 
 
   get passwordMatchError() {
-    // console.log('inside passwordMatchError: '+this.signUpForm.get('password')?.valid);
     return (
       this.signUpForm.getError('mismatch') &&
       this.signUpForm.get('confirmPassword')?.touched
@@ -53,27 +50,5 @@ export class RegistrationComponent implements OnInit{
   onSubmit(){
     console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
     this.userService.addUser(<User>this.signUpForm.value);
-
-    // this.existedEmailMessage = this.userService.existedEmailMessage;
-    // console.log('a==> ' + this.confirmPasswordValidationResult.value);
   }
-
-  // ngOnInit(): void {
-  //   this.route.params.subscribe(
-  //     (params: Params)=>{
-  //       // this.initForm();
-  //     }
-  //   );
-  // }
-
-  // private initForm(){
-  //   this.signUpForm = new FormGroup({
-  //     'fullName': new FormControl(this.signUpForm.get('fullName'), Validators.required),
-  //     'email': new FormControl(this.signUpForm.get('email'), Validators.required),
-  //     'password': new FormControl(this.signUpForm.get('password'), Validators.required),
-  //     'confirmPassword': new FormControl(this.signUpForm.get('confirmPassword'), Validators.required)
-  //   })
-  // }
-
-
 }

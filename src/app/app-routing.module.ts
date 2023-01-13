@@ -4,16 +4,18 @@ import {PublishersComponent} from "./publishers/publishers.component";
 import {RegistrationComponent} from "./admin/registration/registration.component";
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 import {
-  ModalAddPublisherComponent
-} from "./admin/dashboard/publishers/publishers-list/modal-add-publisher/modal-add-publisher.component";
+  AddPublisherComponent
+} from "./admin/dashboard/publishers/publishers-list/add-publisher/add-publisher.component";
+import {PublishersListComponent} from "./admin/dashboard/publishers/publishers-list/publishers-list.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/periodicals', pathMatch: 'full'},
   {path: 'periodicals', component: PublishersComponent},
   {path: 'sign-up', component: RegistrationComponent},
-  {path: 'dashboard', component: DashboardComponent, children: [
-      {path: 'add-new-publisher', component: ModalAddPublisherComponent}
-    ]}
+  {path: 'admin/dashboard', component: DashboardComponent, children: [
+      {path: 'publishers', component: PublishersListComponent},
+      {path: 'publishers/add/new', component: AddPublisherComponent}
+    ]},
 ]
 
 @NgModule({
