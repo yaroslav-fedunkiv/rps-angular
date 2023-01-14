@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit{
               private router: Router,
               private dataShare: DataShareService) {}
 
+
   ngOnInit() {
     this.dataShare.removeServerErrors();
   }

@@ -3,9 +3,6 @@
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div class="modal-header">
           <h4 class="modal-title" id="addPublisherModalLabel">Add Publisher</h4>
-<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--            <span aria-hidden="true">&times;</span>-->
-<!--          </button>-->
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -36,7 +33,7 @@
                    step=".01">
             <div class="text-danger"
                  *ngIf="signUpForm.get('price')?.invalid && signUpForm.get('price')?.touched"
-                 id="publisherPriceError">Price must be positive</div>
+                 id="publisherPriceError">Field price is required and must be positive</div>
           </div>
           <div class="form-group">
             <label>Description</label>

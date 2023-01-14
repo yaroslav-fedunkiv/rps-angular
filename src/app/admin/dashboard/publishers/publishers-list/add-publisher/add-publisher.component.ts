@@ -14,11 +14,12 @@ import {publish, takeUntil} from "rxjs/operators";
   templateUrl: './add-publisher.component.html',
   styleUrls: ['./add-publisher.component.css']
 })
-export class AddPublisherComponent implements OnInit, OnDestroy {
+export class AddPublisherComponent{
   topics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER']
 
   private unsubscribe$ = new Subject<void>();
-  serverErrors$: Observable<string>;
+  serverErrors$: Observable<any> = this.dataShare.serverError$;
+  statusCode = 0;
   // serverError = this.publisherService.errorMessage;
 
   // existedEmailMessage: any = this.userService.existedEmailMessage;
@@ -36,34 +37,25 @@ export class AddPublisherComponent implements OnInit, OnDestroy {
               private dataShare: DataShareService) {}
 
   onSubmit(){
+    this.serverErrors$.subscribe(data => {
+      console.log(data.value)
+    })
     let publisher = <CreatePublisherModel>this.signUpForm.value;
     publisher.price = Number(publisher.price).toFixed(2);
-    console.log('inside RegistrationComponent ==> '+<CreatePublisherModel>this.signUpForm.value)
+    if (publisher.image === null || publisher.image === ''){
+      publisher.image = 'https://sciendo.com/product-not-found.png'
+    }
+    console.log('inside AddPublisherComponent ==> '+<CreatePublisherModel>this.signUpForm.value)
     this.publisherService.addPublisher(publisher)
       .subscribe(
         data => {
-          console.log('Create publisher success', data);
-          // do something with the success data
-        },
-        error => {
-          if(error.status === 400) {
-            this.serverErrors$ = error.error.errors;
-            // this.serverFieldErrors = error.error.fields;
-          }else {
-            console.log('An error occurred:', error.error);
-          }
+          console.log('Create publisher success', data.status);
+            this.router.navigate(['/admin/dashboard/publishers']);
+        }, error => {
+          console.log('error inside component: '+error.value);
         }
       );
-  }
 
-  ngOnInit() {
-    // this.serverErrors$ = this.publisherService.addPublisher(publisher)
-    //   .pipe(takeUntil(this.unsubscribe$));
-  }
-
-  ngOnDestroy() {
-    // this.unsubscribe$.next();
-    // this.unsubscribe$.complete();
   }
 
 }

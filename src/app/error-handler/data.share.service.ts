@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
   providedIn: "root"
 })
 export class DataShareService{
+  statusCode = 0;
   constructor() {
   }
 

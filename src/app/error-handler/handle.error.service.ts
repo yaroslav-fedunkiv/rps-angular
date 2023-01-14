@@ -21,9 +21,6 @@ export class HandleErrorService {
         case 200:
           errorMessage = `${err.status}: ok!`
           break;
-        // case 400:
-        //   errorMessage = `${err.status}: Bad Request.`;
-        //   break;
         case 401:
           errorMessage = `${err.status}: You are unauthorized to do this action.`;
           break;

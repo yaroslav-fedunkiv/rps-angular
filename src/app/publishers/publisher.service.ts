@@ -34,14 +34,6 @@ export class PublisherService{
     ('http://localhost:8080/publishers/create', publisher)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          // let errorMessage = '';
-          // if (error.error instanceof ErrorEvent) {
-          //   // client-side error
-          //   errorMessage = `Error: ${error.error.message}`;
-          // } else {
-          //   // server-side error
-          //   this.errorMessage = error.error.errors[0];
-          // }
           return throwError(error);
         })
       );
