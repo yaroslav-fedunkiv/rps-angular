@@ -19,10 +19,6 @@
             <span class="glyphicon glyphicon-plus" style="margin-right: 5px"></span>
             Add New Publisher
           </a>
-          <a class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus" style="margin-right: 5px"></span>
-            Add New Version
-          </a>
         </div>
       </div>
     </div>
@@ -33,14 +29,16 @@
               <th>Id</th>
               <th>Image</th>
               <th>Title</th>
+              <th>Version</th>
               <th>Topic</th>
               <th>Price</th>
               <th>Description</th>
               <th>Created</th>
               <th>Updated</th>
               <th>isActive</th>
-              <th>Edit</th>
               <th>Delete</th>
+              <th>Edit</th>
+              <th>New Version</th>
             </tr>
           </thead>
           <tbody>
@@ -52,6 +50,7 @@
                   <td>{{publisherEl.id}}</td>
                   <td><img src="{{publisherEl.image}}" width="50" height="75" alt="{{publisherEl.title}}"></td>
                   <td><a>{{publisherEl.title}}</a></td>
+                  <td>1</td>
                   <td>{{publisherEl.topic}}</td>
                   <td>{{publisherEl.price}}</td>
                   <td>
@@ -61,13 +60,21 @@
                   <td>{{publisherEl.updated | date:'yyyy-MM-dd' }}</td>
                   <td>{{publisherEl.isActive}}</td>
                   <td>
-                    <button class="btn btn-primary btn-sm" (click)="editItem(publisherEl.id)" style="margin-right: 5px">
+                    <button class="btn btn-danger btn-sm" (click)="deleteItem(publisherEl.id, publisherEl.isActive)">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-warning btn-sm"
+                            (click)="editItem(publisherEl.id)"
+                            >
                       <span class="glyphicon glyphicon-edit"></span>
                     </button>
                   </td>
                   <td>
-                    <button class="btn btn-danger btn-sm" (click)="deleteItem(publisherEl.id, publisherEl.isActive)">
-                      <span class="glyphicon glyphicon-trash"></span>
+                    <button class="btn btn-primary btn-sm"
+                            (click)="editItem(publisherEl.id)">
+                      <span class="glyphicon glyphicon-plus"></span>
                     </button>
                   </td>
                 </tr>
