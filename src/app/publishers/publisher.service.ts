@@ -28,6 +28,10 @@ export class PublisherService{
       }));
   }
 
+  editPublisher(id: number) {
+
+  }
+
   addPublisher(publisher: CreatePublisherModel): Observable<HttpErrorResponse> {
     console.log(publisher.price);
     return this.http.post<HttpErrorResponse>
@@ -76,8 +80,6 @@ export class PublisherService{
           .filter((value, index, self) => self.indexOf(value) === index);
       }));
   }
-
-
 
   sortByTitle(){
     this.publishers.sort((a, b) => (a.title < b.title ? -1 : 1));

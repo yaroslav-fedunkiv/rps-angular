@@ -71,16 +71,18 @@ export class PublishersListComponent implements OnInit{
   }
 
   editItem(id: string){
-    console.log('edit item', id)
+    // this.router.navigate(['edit/publisher/id:']);
+    this.publisherService.editPublisher(+id);
+    console.log('edit item', id);
   }
 
   deleteItem(id: string, isActive: string){
     if (isActive === 'true'){
       this.deactivatePublisher(+id);
-      console.log('deactivate item', id)
+      console.log('deactivate item', id);
     } else if(isActive === 'false'){
       this.activatePublisher(+id);
-      console.log('activate item', id)
+      console.log('activate item', id);
     }
   }
 

@@ -24,6 +24,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {
   AddPublisherComponent
 } from "./admin/dashboard/publishers/publishers-list/add-publisher/add-publisher.component";
+import {
+  EditPublisherComponent
+} from "./admin/dashboard/publishers/publishers-list/edit-publisher/edit-publisher.component";
 
 
 @NgModule({
@@ -38,7 +41,8 @@ import {
     FilterByTopicPipe,
     RegistrationComponent,
     DashboardComponent,
-    AddPublisherComponent
+    AddPublisherComponent,
+    EditPublisherComponent
   ],
   imports: [
     MatDialogModule,

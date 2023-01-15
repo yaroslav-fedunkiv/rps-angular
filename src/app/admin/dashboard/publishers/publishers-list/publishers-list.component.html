@@ -15,7 +15,11 @@
           <h2>Manage <b>Publishers</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn btn-success" routerLink="/admin/dashboard/publishers/add/new" type="button" data-toggle="modal" data-target="#myModal">
+          <a class="btn btn-success"
+             routerLink="/admin/dashboard/publishers/add/new"
+             type="button"
+             data-toggle="modal"
+             data-target="#myModal">
             <span class="glyphicon glyphicon-plus" style="margin-right: 5px"></span>
             Add New Publisher
           </a>
@@ -60,14 +64,15 @@
                   <td>{{publisherEl.updated | date:'yyyy-MM-dd' }}</td>
                   <td>{{publisherEl.isActive}}</td>
                   <td>
-                    <button class="btn btn-danger btn-sm" (click)="deleteItem(publisherEl.id, publisherEl.isActive)">
+                    <button class="btn btn-danger btn-sm"
+                            (click)="deleteItem(publisherEl.id, publisherEl.isActive)">
                       <span class="glyphicon glyphicon-trash"></span>
                     </button>
                   </td>
                   <td>
                     <button class="btn btn-warning btn-sm"
-                            (click)="editItem(publisherEl.id)"
                             >
+                      <a [routerLink]="['/admin/dashboard/publishers/add/new']" ></a>
                       <span class="glyphicon glyphicon-edit"></span>
                     </button>
                   </td>
