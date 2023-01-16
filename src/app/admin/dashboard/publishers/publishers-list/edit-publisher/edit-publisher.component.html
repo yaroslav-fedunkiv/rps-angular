@@ -1,55 +1,65 @@
+<div class="modal-dialog" role="document">
 <div class="modal-content">
-  <form
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()"
         enctype="multipart/form-data">
     <div class="modal-header">
       <h4 class="modal-title">Choose a field(s) for editing</h4>
     </div>
     <div class="modal-body">
       <div class="form-group">
-        <label>Edit data of <strong>publisherName</strong></label>
+        <label>Edit data of <strong>{{currentPublisher.title}}</strong></label>
+      </div>
+      <div class="form-group">
+        <label>New Title</label>
+        <input type="text"
+               formControlName="newTitle"
+               placeholder="{{currentPublisher.title}}"
+               class="form-control">
       </div>
       <div class="form-group">
         <label>Topic</label>
         <select class="form-control" formControlName="topic">
-          <option *ngFor="let topic of topics" [value]="topic">{{topic | titlecase}}</option>
+          <option selected disabled>Choose topic</option>
+          <option *ngFor="let topic of topics"
+                  [value]="topic">{{topic | titlecase}}</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label>Price</label>
-        <input type="text"
-               formControlName="newTitle"
-               class="form-control">
       </div>
       <div class="form-group">
         <label>Price</label>
         <input type="number"
                step=".01"
                formControlName="price"
+               placeholder="{{currentPublisher.price}}"
                class="form-control">
       </div>
       <div class="form-group">
         <label>Description</label>
         <input type="text"
                class="form-control"
-               value="">
+               formControlName="description"
+               placeholder="{{currentPublisher.description}}">
             <span class="text-danger">
                 Publisher's description must be less than 500 symbols!
             </span>
       </div>
       <div class="form-group">
-        <label>Picture</label>
+        <label>Picture URL</label>
         <input type="text"
                class="form-control"
-               value="">
+               placeholder="{{currentPublisher.image}}"
+               formControlName="image">
       </div>
     </div>
     <div class="modal-footer">
       <button type="button"
               class="btn btn-secondary"
-              data-bs-dismiss="modal"><a
-         style="text-decoration: none; color: white">Close</a>
-      </button>
-      <input type="submit" class="btn btn-warning" value="Update">
+              routerLink="/admin/dashboard/publishers"
+              data-bs-dismiss="modal">
+        Close</button>
+      <button type="submit"
+              class="btn btn-warning">Update</button>
+<!--      <input type="submit" class="btn btn-warning" value="Update">-->
     </div>
   </form>
+</div>
 </div>

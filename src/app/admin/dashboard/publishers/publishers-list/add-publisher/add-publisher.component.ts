@@ -15,12 +15,11 @@ import {publish, takeUntil} from "rxjs/operators";
   styleUrls: ['./add-publisher.component.css']
 })
 export class AddPublisherComponent{
-  topics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER']
+  topics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER'];
 
   private unsubscribe$ = new Subject<void>();
   serverErrors$: Observable<any> = this.dataShare.serverError$;
   statusCode = 0;
-  // serverError = this.publisherService.errorMessage;
 
   // existedEmailMessage: any = this.userService.existedEmailMessage;
   signUpForm = new FormGroup({
