@@ -13,11 +13,12 @@ import {FullPublisherModel} from "../../../../../publishers/full-publisher.model
 export class EditPublisherComponent implements OnInit{
   topics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER'];
   currentPublisher: FullPublisherModel;
+  id: number;
 
   signUpForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    topic: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required, Validators.min(0)]),
+    title: new FormControl('', Validators.max(50)),
+    topic: new FormControl(''),
+    price: new FormControl('', [Validators.min(0)]),
     description: new FormControl('', Validators.maxLength(500)),
     image: new FormControl('')
   });
@@ -30,13 +31,23 @@ export class EditPublisherComponent implements OnInit{
     this.route.params.subscribe(
       (params: Params)=>{
         let id = +params['id'];
+        this.id = id;
         this.currentPublisher = this.publisherService.getPublishers().at(id-1) as FullPublisherModel;
       }
     )
   }
 
   onSubmit(){
-
+    let publisher = <CreatePublisherModel>this.signUpForm.value;
+    this.publisherService.editPublisher(this.id, publisher)
+      .subscribe(
+      data => {
+        console.log('Create publisher success', data.status);
+      }, error => {
+        console.log('error inside component: '+error.value);
+      }
+    );
+    this.router.navigate(['/admin/dashboard/publishers']);
   }
 
 }

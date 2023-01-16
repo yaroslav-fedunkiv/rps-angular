@@ -1,7 +1,7 @@
-export interface CreatePublisherModel{
+export interface CreatePublisherModel {
   title: string | undefined | null;
-  topic: string;
-  price: string;
-  description: string;
-  image: string;
+  topic: string | undefined | null;
+  price: string | undefined | null;
+  description: string | undefined | null;
+  image: string | undefined | null;
 }
