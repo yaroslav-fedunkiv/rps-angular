@@ -10,6 +10,7 @@ import {PublishersListComponent} from "./admin/dashboard/publishers/publishers-l
 import {
   EditPublisherComponent
 } from "./admin/dashboard/publishers/publishers-list/edit-publisher/edit-publisher.component";
+import {AddNewIssueComponent} from "./admin/dashboard/publishers/publishers-list/add-new-issue/add-new-issue.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/periodicals', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   {path: 'admin/dashboard', component: DashboardComponent, children: [
       {path: 'publishers', component: PublishersListComponent},
       {path: 'publishers/add/new', component: AddPublisherComponent},
-      {path: 'publishers/edit/:id', component: EditPublisherComponent}
+      {path: 'publishers/edit/:id', component: EditPublisherComponent},
+      {path: 'publishers/new/issue/:id', component: AddNewIssueComponent}
     ]},
 ]
 

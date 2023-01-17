@@ -1,5 +1,6 @@
 export interface CreatePublisherModel {
   title: string | undefined | null;
+  issue: string | undefined | null;
   topic: string | undefined | null;
   price: string | undefined | null;
   description: string | undefined | null;

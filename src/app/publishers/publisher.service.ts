@@ -42,6 +42,16 @@ export class PublisherService implements OnInit{
       );
   }
 
+  addNewIssue(id: number, publisher: CreatePublisherModel): Observable<HttpErrorResponse> {
+    return this.http.patch<HttpErrorResponse>
+    (`http://localhost:8080/publishers/add/new/issue/${id}`, publisher)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(error);
+        })
+      );
+  }
+
   addPublisher(publisher: CreatePublisherModel): Observable<HttpErrorResponse> {
     return this.http.post<HttpErrorResponse>
     ('http://localhost:8080/publishers/create', publisher)

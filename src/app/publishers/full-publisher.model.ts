@@ -1,6 +1,7 @@
 export interface FullPublisherModel{
   id: string;
   title: string;
+  issue: string;
   topic: string;
   price: number;
   image: string;

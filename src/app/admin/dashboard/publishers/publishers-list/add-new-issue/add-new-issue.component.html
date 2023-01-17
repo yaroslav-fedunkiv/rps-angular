@@ -1,15 +1,16 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <form >
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="modal-header">
-        <h4 class="modal-title">Add new issue of journal {{}}</h4>
+        <h4 class="modal-title">Add new issue of <strong style="color: #337ab7">"{{currentPublisher.title}}"</strong></h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
         </div>
         <div class="form-group">
-          <strong style="color: red">*</strong><label>Version</label>
+          <strong style="color: red">*</strong><label>New Issue</label>
           <input type="number"
+                 formControlName="issue"
                  class="form-control"/>
             <span class="text-danger" *ngIf="true">
                 The Number of Issue should be larger than previous
@@ -17,17 +18,26 @@
         </div>
 
         <div class="form-group">
-          <label>Picture</label>
+          <label>Picture URL</label>
           <input type="text"
                  formControlName="image"
                  class="form-control">
+          <img src="{{currentPublisher.image}}"
+               style="margin-top: 5px"
+               width="90px"
+               height="135px"
+               alt="{{currentPublisher.title}}">
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><a
-          href="/publishers?page=${sessionScope.get('page')}" style="text-decoration: none; color: white">Close</a>
-        </button>
-        <input type="submit" class="btn btn-primary" value="Add">
+      <div class="modal-footer" style="margin-top: -23px;">
+        <button type="button"
+                class="btn btn-secondary"
+                routerLink="/admin/dashboard/publishers"
+                data-dismiss="modal">
+          Close</button>
+        <button type="submit"
+                [disabled]="signUpForm.invalid"
+                class="btn btn-primary">Save</button>
       </div>
     </form>
   </div>

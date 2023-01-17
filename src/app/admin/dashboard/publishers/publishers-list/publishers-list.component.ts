@@ -63,8 +63,10 @@ export class PublishersListComponent implements OnInit{
 
   editItem(id: string){
     this.router.navigate(['edit', id], {relativeTo: this.route})
-    // this.publisherService.editPublisher(+id);
-    // console.log('edit item', id);
+  }
+
+  newIssue(id: string){
+    this.router.navigate(['new/issue', id], {relativeTo: this.route})
   }
 
   deleteItem(id: string, isActive: string){

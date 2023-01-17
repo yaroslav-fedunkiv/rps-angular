@@ -27,6 +27,7 @@ import {
 import {
   EditPublisherComponent
 } from "./admin/dashboard/publishers/publishers-list/edit-publisher/edit-publisher.component";
+import {AddNewIssueComponent} from "./admin/dashboard/publishers/publishers-list/add-new-issue/add-new-issue.component";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {
     RegistrationComponent,
     DashboardComponent,
     AddPublisherComponent,
-    EditPublisherComponent
+    EditPublisherComponent,
+    AddNewIssueComponent
   ],
   imports: [
     MatDialogModule,

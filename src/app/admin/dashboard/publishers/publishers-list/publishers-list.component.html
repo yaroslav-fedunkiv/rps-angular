@@ -33,7 +33,7 @@
               <th>Id</th>
               <th>Image</th>
               <th>Title</th>
-              <th>Version</th>
+              <th>Issue</th>
               <th>Topic</th>
               <th>Price</th>
               <th>Description</th>
@@ -54,7 +54,7 @@
                   <td>{{publisherEl.id}}</td>
                   <td><img src="{{publisherEl.image}}" width="50" height="75" alt="{{publisherEl.title}}"></td>
                   <td><a>{{publisherEl.title}}</a></td>
-                  <td>1</td>
+                  <td>{{publisherEl.issue}}</td>
                   <td>{{publisherEl.topic}}</td>
                   <td>{{publisherEl.price}}</td>
                   <td>
@@ -77,7 +77,7 @@
                   </td>
                   <td>
                     <button class="btn btn-primary btn-sm"
-                            (click)="editItem(publisherEl.id)">
+                            (click)="newIssue(publisherEl.id)">
                       <span class="glyphicon glyphicon-plus"></span>
                     </button>
                   </td>
