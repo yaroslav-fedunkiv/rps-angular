@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../users/user.service";
 import {User} from "../../users/create-user.model";
 import {ConfirmPasswordValidators} from "../../shared/confirm-password.directive";
@@ -50,6 +50,17 @@ export class RegistrationComponent implements OnInit{
 
   onSubmit(){
     console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
-    this.userService.addUser(<User>this.signUpForm.value);
+    // this.router.navigate(['/periodicals']);
+    console.log(this.serverErrors$)
+    this.userService.addUser(<User>this.signUpForm.value)
+      .subscribe(
+        data => {
+          console.log('Create user success', data.status);
+          this.router.navigate(['/periodicals']);
+        }, error => {
+          console.log('error inside component: '+error.value);
+        }
+      );
+    // this.router.navigate(['periodicals'])
   }
 }

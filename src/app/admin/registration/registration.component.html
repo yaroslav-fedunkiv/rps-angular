@@ -21,8 +21,7 @@
                    class="form-control"
                    type="email">
             <span id="error_age"
-                  *ngIf="
-                    (serverErrors$ | async)"
+                  *ngIf="(serverErrors$ | async)"
                   class="text-danger">Such email address is already exist</span>
           </div>
           <div class="form-group">

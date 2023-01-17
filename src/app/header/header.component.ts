@@ -9,14 +9,17 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 @Injectable()
 export class HeaderComponent implements OnInit{
-  allTopics: string[] = [];
+  allTopics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER'];
 
   constructor(private publisherService: PublisherService,
               private router: Router,
               private route: ActivatedRoute) {
   }
 
-  async ngOnInit() {
+   async ngOnInit() {
+     // this.publisherService.getAllTopics().subscribe(data => {
+     //   this.allTopics = data;
+     // });
     await new Promise(f => setTimeout(f, 1000));
     this.publisherService.getAllTopics().subscribe(topics => {
       this.allTopics = topics;
@@ -24,6 +27,7 @@ export class HeaderComponent implements OnInit{
   }
 
   sortByTitle(){
+    console.log('sorting by title')
     this.publisherService.sortByTitle();
   }
 
@@ -36,7 +40,7 @@ export class HeaderComponent implements OnInit{
   }
 
   goHome(){
-    this.router.navigate(['periodicals'], {relativeTo: this.route});
+    this.router.navigate(['/periodicals']);
     this.publisherService.getByTopic('');
   }
 

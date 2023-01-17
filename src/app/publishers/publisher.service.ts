@@ -1,12 +1,12 @@
-import {Injectable} from "@angular/core";
-import {Observable, Subject, throwError} from "rxjs";
+import {Injectable, OnInit} from "@angular/core";
+import {Observable, of, Subject, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
 import {catchError, map} from "rxjs/operators";
 import {CreatePublisherModel} from "./create-publisher.model";
 
 @Injectable()
-export class PublisherService{
+export class PublisherService implements OnInit{
   publisherChanged = new Subject<FullPublisherModel[]>();
   publishers: FullPublisherModel[];
   activePublishers: FullPublisherModel[];
@@ -15,6 +15,10 @@ export class PublisherService{
   errorMessage = '';
 
   constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getAllPublishers();
+  }
 
   getPublishers(){
     return this.publishers.slice();
@@ -52,6 +56,7 @@ export class PublisherService{
     return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get/all-active')
       .pipe(map(publishers => {
         this.activePublishers = publishers.slice(); // make a copy of the array
+        this.getAllTopics();
         return this.activePublishers;
       }));
   }
@@ -79,25 +84,39 @@ export class PublisherService{
   }
 
   getAllTopics(){
-    return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
-      .pipe(map(publishers=> {
-        return publishers.slice().map((item) => item.topic)
-          .filter((value, index, self) => self.indexOf(value) === index);
-      }));
-  }
+    // new Promise(f => setTimeout(f, 1000));
+      return of(this.activePublishers)
+        .pipe(map(publishers=> {
+          console.log(publishers)
+          return publishers?.slice().map((item) => item.topic)
+            .filter((value, index, self) => self.indexOf(value) === index);
+        }));
+    }
+
+
+      // .map((item) => item.topic)
+      // .filter((value, index, self) => self.indexOf(value) === index);
+
+    // return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
+    //   .pipe(map(publishers=> {
+    //     return publishers.slice().map((item) => item.topic)
+    //       .filter((value, index, self) => self.indexOf(value) === index);
+    //   }));
+  // }
 
   sortByTitle(){
-    this.publishers.sort((a, b) => (a.title < b.title ? -1 : 1));
+    // console.log('publishers => ' + this.publishers.at(0)?.title)
+    this.activePublishers.sort((a, b) => (a.title < b.title ? -1 : 1));
   }
 
   sortByPrice(){
-    this.publishers.sort((a, b) => (+a.price < +b.price ? -1 : 1));
+    this.activePublishers.sort((a, b) => (+a.price < +b.price ? -1 : 1));
   }
 
   getByTopic(topic: string) {
     this.currentTopic = topic;
     console.log(this.currentTopic);
-      this.publishersByTopic = this.publishers.filter(obj => {
+      this.publishersByTopic = this.activePublishers.filter(obj => {
       return obj.topic === topic;
     });
   }

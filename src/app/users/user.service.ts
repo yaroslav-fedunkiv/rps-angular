@@ -1,8 +1,10 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {User} from "./create-user.model";
-import {Subject} from "rxjs";
+import {Observable, Subject, throwError} from "rxjs";
 import {HttpBody} from "../shared/http.response.model";
+import {Router} from "@angular/router";
+import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class UserService {
@@ -11,23 +13,30 @@ export class UserService {
   existedEmailMessage: any = '';
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
-  addUser(user: User) {
-    const errors = {errors: []}
-    this.http.post<User>
+  addUser(user: User): Observable<HttpErrorResponse> {
+    // const errors = {errors: []}
+    return this.http.post<HttpErrorResponse>
     ('http://localhost:8080/users/create',user)
-      .subscribe(responseData=>{
-        console.log(responseData);
-      }, error => {
-        console.log('error body ==> ' + JSON.stringify(error));
-        let obj: HttpBody = JSON.parse(JSON.stringify(error));
-        console.log('errors ==> ' + obj.error.errors.at(0));
-          this.existedEmailMessage = obj.error.errors.at(0);
-        this.currentError.next(error.message);
-        console.error('error body ' + error.body);
-      });
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('error inside addUser(user: User): ' + error)
+          return throwError(error);
+        }));
+      // .subscribe(responseData=>{
+      //   console.log(responseData);
+      //   // this.router.navigate(['periodicals']);
+      // }, error => {
+      //   console.log('error body ==> ' + JSON.stringify(error));
+      //   let obj: HttpBody = JSON.parse(JSON.stringify(error));
+      //   console.log('errors ==> ' + obj.error.errors.at(0));
+      //     this.existedEmailMessage = obj.error.errors.at(0);
+      //   this.currentError.next(error.message);
+      //   console.error('error body ' + error.body);
+      // });
   }
 
 }
