@@ -6,6 +6,7 @@ import {User} from "../../users/create-user.model";
 import {ConfirmPasswordValidators} from "../../shared/confirm-password.directive";
 import {DataShareService} from "../../error-handler/data.share.service";
 import {Observable} from "rxjs";
+import {HandleErrorService} from "../../error-handler/handle.error.service";
 
 @Component({
   selector: 'app-registration',
@@ -26,7 +27,8 @@ export class RegistrationComponent implements OnInit{
   constructor(private route: ActivatedRoute,
               private userService: UserService,
               private router: Router,
-              private dataShare: DataShareService) {}
+              private dataShare: DataShareService,
+              private errorService: HandleErrorService) {}
 
 
   ngOnInit() {
@@ -50,7 +52,6 @@ export class RegistrationComponent implements OnInit{
 
   onSubmit(){
     console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
-    // this.router.navigate(['/periodicals']);
     console.log(this.serverErrors$)
     this.userService.addUser(<User>this.signUpForm.value)
       .subscribe(
@@ -61,6 +62,10 @@ export class RegistrationComponent implements OnInit{
           console.log('error inside component: '+error.value);
         }
       );
-    // this.router.navigate(['periodicals'])
+    console.log('getStatusCode = '+this.errorService.statusCode)
+    if (this.errorService.statusCode === '200: ok!'){
+      this.router.navigate(['periodicals'])
+    }
+    //
   }
 }

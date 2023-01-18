@@ -1,12 +1,13 @@
 import {HttpErrorResponse} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {DataShareService} from "./data.share.service";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 
 @Injectable({
   providedIn: "root"
 })
-export class HandleErrorService {
+export class HandleErrorService implements OnInit{
+  statusCode: string;
 
   constructor(private toaster: ToastrService,
               private dataShare: DataShareService) {
@@ -47,7 +48,11 @@ export class HandleErrorService {
           errorMessage = `Something Went Wrong`;
       }
     }
+    this.statusCode = errorMessage;
     console.log(errorMessage);
+  }
+
+  ngOnInit() {
   }
 
   public handleBackendValidations(error: HttpErrorResponse) {

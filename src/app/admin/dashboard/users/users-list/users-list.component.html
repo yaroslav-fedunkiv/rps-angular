@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>manage <strong>users</strong></h2>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Full name</th>
+        <th>Email</th>
+        <th>Balance</th>
+        <th>Active</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.id}}</td>
+          <td><a >{{user.fullName}}</a></td>
+          <td>{{user.email}}</td>
+          <td>{{user.balance}}</td>
+          <td>{{user.isActive}}</td>
+          <td>{{user.created | date:'yyyy-MM-dd'}}</td>
+          <td>{{user.updated | date:'yyyy-MM-dd'}}</td>
+          <td>
+            <button class="btn btn-danger btn-sm"
+                    (click)="deleteItem(user.id, user.isActive)">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

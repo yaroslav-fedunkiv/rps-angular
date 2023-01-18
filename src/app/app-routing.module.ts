@@ -11,12 +11,14 @@ import {
   EditPublisherComponent
 } from "./admin/dashboard/publishers/publishers-list/edit-publisher/edit-publisher.component";
 import {AddNewIssueComponent} from "./admin/dashboard/publishers/publishers-list/add-new-issue/add-new-issue.component";
+import {UsersListComponent} from "./admin/dashboard/users/users-list/users-list.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/periodicals', pathMatch: 'full'},
   {path: 'periodicals', component: PublishersComponent},
   {path: 'sign-up', component: RegistrationComponent},
   {path: 'admin/dashboard', component: DashboardComponent, children: [
+      {path: 'users', component: UsersListComponent},
       {path: 'publishers', component: PublishersListComponent},
       {path: 'publishers/add/new', component: AddPublisherComponent},
       {path: 'publishers/edit/:id', component: EditPublisherComponent},

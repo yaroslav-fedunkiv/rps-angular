@@ -13,7 +13,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 })
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
-  @ViewChild('myModal') myModal: ModalDirective;
+  // @ViewChild('myModal') myModal: ModalDirective;
 
   //pagination:
   page = 1;
@@ -26,15 +26,6 @@ export class PublishersListComponent implements OnInit{
               private router: Router,
               public dialog: MatDialog) {
   }
-
-
-  // openModal() {
-  //   this.myModal.show();
-  // }
-  //
-  // closeModal() {
-  //   this.myModal.hide();
-  // }
 
   handlePageChange(event: number): void {
     this.page = event;

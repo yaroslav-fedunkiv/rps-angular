@@ -1,15 +1,16 @@
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {User} from "./create-user.model";
 import {Observable, Subject, throwError} from "rxjs";
-import {HttpBody} from "../shared/http.response.model";
 import {Router} from "@angular/router";
-import {catchError} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
+import {FullUserModel} from "./full-user.model";
 
 @Injectable()
-export class UserService {
+export class UserService{
   currentError = new Subject<string>()
   user: User;
+  fullUserModel: FullUserModel[];
   existedEmailMessage: any = '';
 
 
@@ -17,8 +18,15 @@ export class UserService {
               private router: Router) {
   }
 
+  getAllUsers(){
+    return this.http.get<FullUserModel[]>('http://localhost:8080/users/get-all')
+      .pipe(map(publishers=> {
+        this.fullUserModel = publishers.slice(); // make a copy of the array
+        return this.fullUserModel;
+      }));
+  }
+
   addUser(user: User): Observable<HttpErrorResponse> {
-    // const errors = {errors: []}
     return this.http.post<HttpErrorResponse>
     ('http://localhost:8080/users/create',user)
       .pipe(
@@ -26,17 +34,28 @@ export class UserService {
           console.log('error inside addUser(user: User): ' + error)
           return throwError(error);
         }));
-      // .subscribe(responseData=>{
-      //   console.log(responseData);
-      //   // this.router.navigate(['periodicals']);
-      // }, error => {
-      //   console.log('error body ==> ' + JSON.stringify(error));
-      //   let obj: HttpBody = JSON.parse(JSON.stringify(error));
-      //   console.log('errors ==> ' + obj.error.errors.at(0));
-      //     this.existedEmailMessage = obj.error.errors.at(0);
-      //   this.currentError.next(error.message);
-      //   console.error('error body ' + error.body);
-      // });
+  }
+
+  deactivatePublisher(id: number){
+    const publishers = this.fullUserModel;
+    if (publishers) {
+      const publisher = publishers.at(id-1);
+      if (publisher) {
+        publisher.isActive = 'false';
+      }
+    }
+    return this.http.delete(`http://localhost:8080/users/deactivate/${id}`, {});
+  }
+
+  activatePublisher(id: number){
+    const publishers = this.fullUserModel;
+    if (publishers) {
+      const publisher = publishers.at(id-1);
+      if (publisher) {
+        publisher.isActive = 'true';
+      }
+    }
+    return this.http.delete(`http://localhost:8080/users/activate/${id}`, {});
   }
 
 }
