@@ -3,8 +3,6 @@ import {FullPublisherModel} from "../../../../publishers/full-publisher.model";
 import {PublisherService} from "../../../../publishers/publisher.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {AddPublisherComponent} from "./add-publisher/add-publisher.component";
-import {ModalDirective} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-publishers-list',
@@ -13,7 +11,6 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 })
 export class PublishersListComponent implements OnInit{
   publishers: FullPublisherModel[];
-  // @ViewChild('myModal') myModal: ModalDirective;
 
   //pagination:
   page = 1;
@@ -37,6 +34,7 @@ export class PublishersListComponent implements OnInit{
     this.page = 1;
     this.retrievePublishers();
   }
+
   retrievePublishers():void{
     this.publisherService.getAllPublishers().subscribe((response) =>{
         this.publishers = response as FullPublisherModel[];

@@ -7,6 +7,8 @@ import {ConfirmPasswordValidators} from "../../shared/confirm-password.directive
 import {DataShareService} from "../../error-handler/data.share.service";
 import {Observable} from "rxjs";
 import {HandleErrorService} from "../../error-handler/handle.error.service";
+import {async} from "@angular/core/testing";
+// import {async} from "rxjs/internal/scheduler/async";
 
 @Component({
   selector: 'app-registration',
@@ -52,20 +54,23 @@ export class RegistrationComponent implements OnInit{
 
   onSubmit(){
     console.log('inside RegistrationComponent ==> '+<User>this.signUpForm.value)
-    console.log(this.serverErrors$)
+    // console.log(this.serverErrors$)
     this.userService.addUser(<User>this.signUpForm.value)
       .subscribe(
         data => {
           console.log('Create user success', data.status);
-          this.router.navigate(['/periodicals']);
+          // this.router.navigate(['/periodicals']);
         }, error => {
           console.log('error inside component: '+error.value);
         }
       );
+    console.log(this.dataShare.statusCode)
+    // if (this.serverErrors$ | async){
+    //   console.log('inside if statement')
+    //   this.router.navigate(['periodicals'])
+    // }
     console.log('getStatusCode = '+this.errorService.statusCode)
-    if (this.errorService.statusCode === '200: ok!'){
-      this.router.navigate(['periodicals'])
-    }
+
     //
   }
 }

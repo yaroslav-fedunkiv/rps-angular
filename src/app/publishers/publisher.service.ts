@@ -94,7 +94,6 @@ export class PublisherService implements OnInit{
   }
 
   getAllTopics(){
-    // new Promise(f => setTimeout(f, 1000));
       return of(this.activePublishers)
         .pipe(map(publishers=> {
           console.log(publishers)
@@ -103,19 +102,7 @@ export class PublisherService implements OnInit{
         }));
     }
 
-
-      // .map((item) => item.topic)
-      // .filter((value, index, self) => self.indexOf(value) === index);
-
-    // return this.http.get<FullPublisherModel[]>('http://localhost:8080/publishers/get-all')
-    //   .pipe(map(publishers=> {
-    //     return publishers.slice().map((item) => item.topic)
-    //       .filter((value, index, self) => self.indexOf(value) === index);
-    //   }));
-  // }
-
   sortByTitle(){
-    // console.log('publishers => ' + this.publishers.at(0)?.title)
     this.activePublishers.sort((a, b) => (a.title < b.title ? -1 : 1));
   }
 

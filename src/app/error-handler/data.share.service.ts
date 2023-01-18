@@ -13,6 +13,7 @@ export class DataShareService{
   public serverError$ = this.serverErrorsSubject.asObservable();
 
   addServerErrors(errors: any){
+    // this.statusCode = 400;
     this.serverErrorsSubject.next(errors);
   }
   removeServerErrors(){
