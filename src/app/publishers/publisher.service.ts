@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from "@angular/core";
-import {Observable, of, Subject, throwError} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {FullPublisherModel} from "./full-publisher.model";
 import {catchError, map} from "rxjs/operators";
@@ -13,11 +13,17 @@ export class PublisherService implements OnInit{
   publishersByTopic: FullPublisherModel[];
   currentTopic = '';
   errorMessage = '';
+  searchedPublisher = new BehaviorSubject('');
+  currentSearchTerm = this.searchedPublisher.asObservable();
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.getAllPublishers();
+  }
+
+  setSearchedPublisher(searchTerm: string){
+    this.searchedPublisher.next(searchTerm);
   }
 
   getPublishers(){

@@ -1,6 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {PublisherService} from "../publishers/publisher.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -10,20 +11,22 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Injectable()
 export class HeaderComponent implements OnInit{
   allTopics: string[] = ['NEWS', 'ECONOMY', 'FASHION', 'SCIENCE', 'MUSIC', 'NATURE', 'OTHER'];
-
+  form: NgForm;
   constructor(private publisherService: PublisherService,
-              private router: Router,
-              private route: ActivatedRoute) {
+              private router: Router) {
   }
 
    async ngOnInit() {
-     // this.publisherService.getAllTopics().subscribe(data => {
-     //   this.allTopics = data;
-     // });
     await new Promise(f => setTimeout(f, 1000));
     this.publisherService.getAllTopics().subscribe(topics => {
       this.allTopics = topics;
     });
+  }
+
+  search(form: NgForm){
+    this.form = form;
+    this.publisherService.setSearchedPublisher(form.value.search);
+    console.log(form.value.search);
   }
 
   sortByTitle(){
@@ -42,10 +45,11 @@ export class HeaderComponent implements OnInit{
   goHome(){
     this.router.navigate(['/periodicals']);
     this.publisherService.getByTopic('');
+    this.publisherService.setSearchedPublisher('');
+    this.form.reset();
   }
 
   goToSignUpForm(){
-    this.router.navigate(['/sign-up'], //{relativeTo: this.route}
-    );
+    this.router.navigate(['/sign-up']);
   }
 }

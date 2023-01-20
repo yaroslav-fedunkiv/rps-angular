@@ -1,11 +1,13 @@
 <app-header></app-header>
 <div class="container col-8" style="justify-content: center">
   <app-publisher-item
-    *ngFor="let publisherEl of publishers | filterByTopic:currentTopic()| paginate: {
+    *ngFor="let publisherEl of publishers | searchingFilter: searchPublisher
+    | filterByTopic:currentTopic() | paginate: {
             itemsPerPage: pageSize,
             currentPage: page,
             totalItems: count
-    }  ; let i = index"
+    }
+     ; let i = index"
     [publisher]="publisherEl"
     [index]="i"></app-publisher-item>
   <pagination-controls class="my-pagination"

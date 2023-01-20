@@ -10,7 +10,7 @@ import { PublisherItemComponent } from './publishers/publisher-list/publisher-it
 import {PublisherService} from "./publishers/publisher.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { FilterByTopicPipe } from './publishers/filter-by-topic.pipe';
+import { FilterByTopicPipe } from './pipes/filter-by-topic.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AppRoutingModule} from "./app-routing.module";
 import { RegistrationComponent } from './admin/registration/registration.component';
@@ -29,6 +29,7 @@ import {
 } from "./admin/dashboard/publishers/publishers-list/edit-publisher/edit-publisher.component";
 import {AddNewIssueComponent} from "./admin/dashboard/publishers/publishers-list/add-new-issue/add-new-issue.component";
 import { UsersListComponent } from './admin/dashboard/users/users-list/users-list.component';
+import {FilterPipe} from "./pipes/filter.pipe";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { UsersListComponent } from './admin/dashboard/users/users-list/users-lis
     AddPublisherComponent,
     EditPublisherComponent,
     AddNewIssueComponent,
-    UsersListComponent
+    UsersListComponent,
+    FilterPipe
   ],
   imports: [
     MatDialogModule,

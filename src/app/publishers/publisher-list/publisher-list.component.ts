@@ -14,6 +14,7 @@ export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   publishers: FullPublisherModel[];
   subscription: Subscription;
   currentTopic = this.getCurrentTopic;
+  searchPublisher = '';
 
   page = 1;
   count = 0;
@@ -21,6 +22,9 @@ export class PublisherListComponent implements  OnInit, OnDestroy, OnChanges{
   pageSizes = [5, 10, 15];
 
   constructor(private publisherService: PublisherService) {
+    publisherService.currentSearchTerm.subscribe(searchTerm => {
+      this.searchPublisher = searchTerm;
+    });
   }
 
   handlePageChange(event: number): void {
