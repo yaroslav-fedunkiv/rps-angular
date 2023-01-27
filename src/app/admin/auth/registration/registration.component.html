@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-md-6 col-sm-12 col-lg-4 col-md-offset-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Registration form
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="fullName">Full Name<strong style="color: red">*</strong></label>
+            <input id="fullName"
+                   class="form-control"
+                   type="text"
+                   formControlName="fullName">
+            <span id="error_name" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email<strong style="color: red">*</strong></label>
+            <input id="email"
+                   formControlName="email"
+                   class="form-control"
+                   type="email">
+            <span id="error_age"
+                  *ngIf="(serverErrors$ | async)"
+                  class="text-danger">Such email address is already exist</span>
+          </div>
+          <div class="form-group">
+            <label for="password">Password<strong style="color: red">*</strong></label>
+            <input type="password"
+                   id="password"
+                   name="text"
+                   formControlName="password"
+                   class="form-control" >
+            <span id="error_password"
+                  class="text-danger"
+                  *ngIf="this.signUpForm.get('password')?.invalid && this.signUpForm.get('password')?.touched">
+              Your password must have at least 8 symbols, numbers and special symbols
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="confirm_password">Confirm password<strong style="color: red">*</strong></label>
+            <input type="password"
+                   id="confirm_password"
+                   name="text"
+                   formControlName="confirmPassword"
+                   class="form-control"
+                   [ngStyle]="{'border':passwordMatchError ? '1px solid red' : '' }">
+            <span id="error_confirm_password"
+                  class="text-danger"></span>
+          </div>
+
+          <button type="submit"
+                  class="btn btn-primary center"
+                  [disabled]="!signUpForm.valid">
+            Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

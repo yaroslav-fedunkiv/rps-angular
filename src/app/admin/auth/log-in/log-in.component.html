@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-md-6 col-sm-12 col-lg-4 col-md-offset-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Log in form</div>
+      <div class="panel-body">
+        <form (ngSubmit)="login(f)" #f="ngForm">
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control"
+                   type="email"
+                   ngModel
+                   name="email">
+            <span id="error_name" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input name="password"
+                   class="form-control"
+                   ngModel
+                   type="password">
+<!--            <span id="error_age"-->
+<!--                  *ngIf="(serverErrors$ | async)"-->
+<!--                  class="text-danger">Such email address is already exist</span>-->
+          </div>
+
+          <button type="submit"
+                  class="btn btn-primary center">
+            Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

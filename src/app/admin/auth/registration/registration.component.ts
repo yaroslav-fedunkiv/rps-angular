@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../users/user.service";
-import {User} from "../../users/create-user.model";
-import {ConfirmPasswordValidators} from "../../shared/confirm-password.directive";
-import {DataShareService} from "../../error-handler/data.share.service";
+import {UserService} from "../../../users/user.service";
+import {User} from "../../../users/create-user.model";
+import {ConfirmPasswordValidators} from "../../../shared/confirm-password.directive";
+import {DataShareService} from "../../../error-handler/data.share.service";
 import {Observable} from "rxjs";
-import {HandleErrorService} from "../../error-handler/handle.error.service";
+import {HandleErrorService} from "../../../error-handler/handle.error.service";
 import {async} from "@angular/core/testing";
 // import {async} from "rxjs/internal/scheduler/async";
 

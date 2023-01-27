@@ -13,7 +13,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FilterByTopicPipe } from './pipes/filter-by-topic.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AppRoutingModule} from "./app-routing.module";
-import { RegistrationComponent } from './admin/registration/registration.component';
+import { RegistrationComponent } from './admin/auth/registration/registration.component';
 import {UserService} from "./users/user.service";
 import {HandleErrorsInterceptor} from "./error-handler/handle.errors.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -30,6 +30,7 @@ import {
 import {AddNewIssueComponent} from "./admin/dashboard/publishers/publishers-list/add-new-issue/add-new-issue.component";
 import { UsersListComponent } from './admin/dashboard/users/users-list/users-list.component';
 import {FilterPipe} from "./pipes/filter.pipe";
+import { LogInComponent } from './admin/auth/log-in/log-in.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {FilterPipe} from "./pipes/filter.pipe";
     EditPublisherComponent,
     AddNewIssueComponent,
     UsersListComponent,
-    FilterPipe
+    FilterPipe,
+    LogInComponent
   ],
   imports: [
     MatDialogModule,

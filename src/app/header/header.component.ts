@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit{
     this.form.reset();
   }
 
-  goToSignUpForm(){
-    this.router.navigate(['/sign-up']);
-  }
+  // goToSignUpForm(){
+  //   this.router.navigate(['/sign-up']);
+  // }
 }

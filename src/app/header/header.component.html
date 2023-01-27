@@ -50,8 +50,11 @@
         <li><button style="margin-left: 5px;"
                     class="btn-primary btn"
                     type="button"
-                    (click)="goToSignUpForm()">Sign up</button></li>
-        <li><button style="margin-left: 5px;" class="btn-primary btn" type="button">Log in</button></li>
+                    routerLink="/sign-up">Sign up</button></li>
+        <li><button style="margin-left: 5px;"
+                    class="btn-primary btn"
+                    routerLink="/log-in"
+                    type="button">Log in</button></li>
       </ul>
       <form class="navbar-form navbar-right"
             (ngSubmit)="search(f)" #f="ngForm">
